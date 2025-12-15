@@ -8,6 +8,7 @@ import { en } from '@payloadcms/translations/languages/en'
 import { Technology } from './schema/technology'
 import { Projects } from './schema/projects'
 import { Media } from './schema/media'
+import { Users } from './schema/users'
 import { About } from './page/about'
 
 export default buildConfig({
@@ -33,6 +34,7 @@ export default buildConfig({
 
   // Define and configure your collections in this array
   collections: [
+    Users,
     Projects,
     Technology,
     Media,
