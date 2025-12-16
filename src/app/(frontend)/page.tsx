@@ -10,9 +10,7 @@ export default async function Home() {
     fallbackLocale: false
   })
 
-  console.log(about)
-  
   return (
-    <div></div>
+    <div>{about.job_title}</div>
   );
 }
