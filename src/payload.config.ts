@@ -9,6 +9,7 @@ import { Technology } from './schema/technology'
 import { Projects } from './schema/projects'
 import { Media } from './schema/media'
 import { Users } from './schema/users'
+import { NavbarItem } from './schema/navbar-item'
 import { About } from './page/about'
 
 export default buildConfig({
@@ -38,6 +39,7 @@ export default buildConfig({
     Projects,
     Technology,
     Media,
+    NavbarItem,
   ],
 
   // Define and configure your globals in this array
