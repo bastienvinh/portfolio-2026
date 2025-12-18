@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
+import { Navbar } from "@/app/(frontend)/_components/navbar";
 import { LanguageProvider } from "@/context/language";
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
         className={`${inter.className} antialiased`}
       >
         <LanguageProvider>
-          <div className="w-screen">
+          <div className="container mx-auto h-screen flex flex-col gap-10">
             <Navbar />
             <div>
               {children}
