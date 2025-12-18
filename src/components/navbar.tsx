@@ -5,11 +5,13 @@ import { useGeneralInformations } from "@/features/default/hooks/use-general-inf
 import { useNavbarLabels } from "@/features/default/hooks/use-navbar-labels";
 import Link from "next/link"
 import { FaCode, FaGithub, FaLinkedin } from "react-icons/fa"
+import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const { language, setLanguage } = useLanguage()
   const { tabAbout, tabBlog, tabProjects, tabContact } = useNavbarLabels(language);
-  const { informations, isLoading } = useGeneralInformations(language);
+  const { informations } = useGeneralInformations(language);
 
   return (
     <nav className="py-4 px-4 md:px-6 sticky top-0 z-50">
@@ -18,16 +20,11 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2 text-primary font-bold text-xl">
           <FaCode className="text-primary text-2xl" />
           <span className="text-white hidden md:inline">BASTIEN VINH</span>
+          <span className="text-white md:hidden">BV</span>
         </Link>
 
         {/* Mobile Navigation - inline */}
         <div className="flex md:hidden items-center gap-3">
-          <Link
-            href="#stories"
-            className="text-nav-text hover:text-nav-text-hover transition-colors text-sm"
-          >
-            {tabAbout?.name ?? "About Me"}
-          </Link>
           <Link
             href="#projects"
             className="text-nav-text hover:text-nav-text-hover transition-colors text-sm"
@@ -44,20 +41,21 @@ export function Navbar() {
 
           {/* Language Toggle - Mobile */}
           <div className="flex items-center bg-gray-800 rounded-full p-1">
-            <button className="px-2 py-1 rounded-full bg-gray-700 text-white text-xs font-medium transition-colors">
+            <button onClick={() => setLanguage("fr")} className={cn("px-2 py-1 rounded-full text-white text-xs font-medium transition-colors", {
+              "bg-gray-700": language === "fr",
+              "text-gray-400": language !== "fr",
+            })}>
               FR
             </button>
-            <button className="px-2 py-1 rounded-full text-gray-400 hover:text-white text-xs font-medium transition-colors">
+            <button onClick={() => setLanguage("en")} className={cn("px-2 py-1 rounded-full text-xs font-medium transition-colors", {
+              "bg-gray-700": language === "en",
+              "text-gray-400": language !== "en",
+            })}>
               EN
             </button>
           </div>
 
-          <Link
-            href="#contact"
-            className="bg-primary hover:bg-primary-hover text-white px-3 py-1.5 rounded transition-colors font-medium text-sm"
-          >
-            {tabContact?.name ?? "Contact"}
-          </Link>
+          <Button className="text-sm">Contact</Button>
         </div>
 
         {/* Desktop Navigation */}
@@ -116,13 +114,7 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Contact Button */}
-          <Link
-            href="#blog"
-            className="bg-primary hover:bg-primary-hover text-white px-6 py-2 rounded transition-colors font-medium"
-          >
-            {tabContact?.name ?? "Contact"}
-          </Link>
+          <Button className="cursor-pointer">{tabContact?.name ?? "Contact"}</Button>
         </div>
       </div>
     </nav>

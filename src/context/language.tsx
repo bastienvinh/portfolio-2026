@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, useSyncExternalStore, useCallback, ReactNode } from "react";
 
 type Language = "fr" | "en";
 
@@ -14,35 +14,58 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const STORAGE_KEY = "portfolio-language";
 
+function getStoredLanguage(): Language | null {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored === "fr" || stored === "en") {
+    return stored;
+  }
+  return null;
+}
+
 interface LanguageProviderProps {
   children: ReactNode;
   defaultLanguage?: Language;
 }
 
 export function LanguageProvider({ children, defaultLanguage = "fr" }: LanguageProviderProps) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    // Initialize from localStorage on client side
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem(STORAGE_KEY) as Language | null;
-      if (stored && (stored === "fr" || stored === "en")) {
-        return stored;
+  const subscribe = useCallback((onStoreChange: () => void) => {
+    const handler = (e: StorageEvent) => {
+      if (e.key === STORAGE_KEY) {
+        onStoreChange();
       }
-    }
+    };
+    window.addEventListener("storage", handler);
+    return () => window.removeEventListener("storage", handler);
+  }, []);
+
+  const getSnapshot = useCallback(() => {
+    return getStoredLanguage() ?? defaultLanguage;
+  }, [defaultLanguage]);
+
+  const getServerSnapshot = useCallback(() => {
     return defaultLanguage;
-  });
+  }, [defaultLanguage]);
 
-  // Save language to localStorage when it changes
+  const storedLanguage = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [language, setLanguageState] = useState<Language>(storedLanguage);
+
+  // Sync internal state when stored language changes (e.g., from another tab)
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, language);
-  }, [language]);
+    setLanguageState(storedLanguage);
+  }, [storedLanguage]);
 
-  const setLanguage = (lang: Language) => {
+  const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
-  };
+    localStorage.setItem(STORAGE_KEY, lang);
+  }, []);
 
-  const toggleLanguage = () => {
-    setLanguageState((prev) => (prev === "fr" ? "en" : "fr"));
-  };
+  const toggleLanguage = useCallback(() => {
+    setLanguageState((prev) => {
+      const next = prev === "fr" ? "en" : "fr";
+      localStorage.setItem(STORAGE_KEY, next);
+      return next;
+    });
+  }, []);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage }}>
