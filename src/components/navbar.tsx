@@ -4,6 +4,7 @@ import { useLanguage } from "@/context/language";
 import { useGeneralInformations } from "@/features/default/hooks/use-general-informations";
 import { useNavbarLabels } from "@/features/default/hooks/use-navbar-labels";
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { FaCode, FaGithub, FaLinkedin } from "react-icons/fa"
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -12,6 +13,7 @@ export function Navbar() {
   const { language, setLanguage } = useLanguage()
   const { tabAbout, tabBlog, tabProjects, tabContact } = useNavbarLabels(language);
   const { informations } = useGeneralInformations(language);
+  const pathname = usePathname();
 
   return (
     <nav className="py-4 px-4 md:px-6 sticky top-0 z-50">
@@ -26,14 +28,14 @@ export function Navbar() {
         {/* Mobile Navigation - inline */}
         <div className="flex md:hidden items-center gap-3">
           <Link
-            href="#projects"
+            href="/projects"
             className="text-nav-text hover:text-nav-text-hover transition-colors text-sm"
           >
             {tabProjects?.name ?? "Projects"}
           </Link>
 
           <Link
-            href="#blog"
+            href="/blog"
             className="text-nav-text hover:text-nav-text-hover transition-colors text-sm"
           >
             {tabBlog?.name ?? "Blog"}
@@ -85,20 +87,26 @@ export function Navbar() {
           {/* Nav Links */}
           <div className="flex items-center gap-6">
             <Link
-              href="#stories"
-              className="flex items-center gap-1 text-nav-text hover:text-nav-text-hover transition-colors"
+              href="/"
+              className={cn("flex items-center gap-1 text-nav-text hover:text-nav-text-hover transition-colors", {
+                "text-nav-text-hover": pathname === "/"
+              })}
             >
               {tabAbout?.name ?? "About Me"}
             </Link>
             <Link
-              href="#projects"
-              className="text-nav-text hover:text-nav-text-hover transition-colors"
+              href="/projects"
+              className={cn("text-nav-text hover:text-nav-text-hover transition-colors", {
+                "text-nav-text-hover": pathname === "/projects"
+              })}
             >
               {tabProjects?.name ?? "Projects"}
             </Link>
             <Link
-              href="#blogs"
-              className="text-nav-text hover:text-nav-text-hover transition-colors"
+              href="/blog"
+              className={cn("text-nav-text hover:text-nav-text-hover transition-colors", {
+                "text-nav-text-hover": pathname === "/blog"
+              })}
             >
               {tabBlog?.name ?? "Blog"}
             </Link>
