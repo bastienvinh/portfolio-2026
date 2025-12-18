@@ -71,7 +71,6 @@ export interface Config {
     projects: Project;
     technology: Technology;
     media: Media;
-    'navbar-items': NavbarItem;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -83,7 +82,6 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     technology: TechnologySelect<false> | TechnologySelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    'navbar-items': NavbarItemsSelect<false> | NavbarItemsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -95,9 +93,17 @@ export interface Config {
   fallbackLocale: ('false' | 'none' | 'null') | false | null | ('fr' | 'en') | ('fr' | 'en')[];
   globals: {
     about: About;
+    tab_about: TabAbout;
+    tab_projects: TabProject;
+    tab_blog: TabBlog;
+    tab_contact: TabContact;
   };
   globalsSelect: {
     about: AboutSelect<false> | AboutSelect<true>;
+    tab_about: TabAboutSelect<false> | TabAboutSelect<true>;
+    tab_projects: TabProjectsSelect<false> | TabProjectsSelect<true>;
+    tab_blog: TabBlogSelect<false> | TabBlogSelect<true>;
+    tab_contact: TabContactSelect<false> | TabContactSelect<true>;
   };
   locale: 'fr' | 'en';
   user: User & {
@@ -210,17 +216,6 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "navbar-items".
- */
-export interface NavbarItem {
-  id: number;
-  name: string;
-  link: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -258,10 +253,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
-      } | null)
-    | ({
-        relationTo: 'navbar-items';
-        value: number | NavbarItem;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -370,16 +361,6 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "navbar-items_select".
- */
-export interface NavbarItemsSelect<T extends boolean = true> {
-  name?: T;
-  link?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -433,6 +414,46 @@ export interface About {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tab_about".
+ */
+export interface TabAbout {
+  id: number;
+  name: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tab_projects".
+ */
+export interface TabProject {
+  id: number;
+  name: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tab_blog".
+ */
+export interface TabBlog {
+  id: number;
+  name: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tab_contact".
+ */
+export interface TabContact {
+  id: number;
+  name: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "about_select".
  */
 export interface AboutSelect<T extends boolean = true> {
@@ -440,6 +461,46 @@ export interface AboutSelect<T extends boolean = true> {
   presentation?: T;
   technologies_text?: T;
   technologies?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tab_about_select".
+ */
+export interface TabAboutSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tab_projects_select".
+ */
+export interface TabProjectsSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tab_blog_select".
+ */
+export interface TabBlogSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tab_contact_select".
+ */
+export interface TabContactSelect<T extends boolean = true> {
+  name?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

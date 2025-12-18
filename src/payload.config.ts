@@ -9,8 +9,8 @@ import { Technology } from './schema/technology'
 import { Projects } from './schema/projects'
 import { Media } from './schema/media'
 import { Users } from './schema/users'
-import { NavbarItem } from './schema/navbar-item'
 import { About } from './page/about'
+import { TabAbout, TabBlog, TabContact, TabProjects } from './page/navbar'
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
@@ -39,11 +39,10 @@ export default buildConfig({
     Projects,
     Technology,
     Media,
-    NavbarItem,
   ],
 
   // Define and configure your globals in this array
-  globals: [About],
+  globals: [About, TabAbout, TabProjects, TabBlog, TabContact],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',
