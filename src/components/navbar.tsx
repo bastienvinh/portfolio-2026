@@ -105,10 +105,16 @@ export function Navbar() {
 
             {/* Language Toggle - Desktop */}
             <div className="flex items-center bg-gray-800 rounded-full p-1">
-              <button className="px-3 py-1 rounded-full bg-gray-700 text-white text-sm font-medium transition-colors">
+              <button onClick={() => setLanguage("fr")} className={cn("px-3 py-1 rounded-full text-sm font-medium transition-colors cursor-pointer", {
+                "bg-gray-700 text-white": language === "fr",
+                "text-gray-400": language !== "fr",
+              })}>
                 Français
               </button>
-              <button className="px-3 py-1 rounded-full text-gray-400 hover:text-white text-sm font-medium transition-colors">
+              <button onClick={() => setLanguage("en")} className={cn("px-3 py-1 rounded-full  text-sm font-medium transition-colors cursor-pointer", {
+                "bg-gray-700 text-white": language === "en",
+                " text-gray-400": language !== "en",
+              })}>
                 English
               </button>
             </div>
