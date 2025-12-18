@@ -92,6 +92,7 @@ export interface Config {
   };
   fallbackLocale: ('false' | 'none' | 'null') | false | null | ('fr' | 'en') | ('fr' | 'en')[];
   globals: {
+    general_informations: GeneralInformation;
     about: About;
     tab_about: TabAbout;
     tab_projects: TabProject;
@@ -99,6 +100,7 @@ export interface Config {
     tab_contact: TabContact;
   };
   globalsSelect: {
+    general_informations: GeneralInformationsSelect<false> | GeneralInformationsSelect<true>;
     about: AboutSelect<false> | AboutSelect<true>;
     tab_about: TabAboutSelect<false> | TabAboutSelect<true>;
     tab_projects: TabProjectsSelect<false> | TabProjectsSelect<true>;
@@ -401,6 +403,19 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "general_informations".
+ */
+export interface GeneralInformation {
+  id: number;
+  linkedin_url: string;
+  x_twitter: string;
+  github_url: string;
+  email: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "about".
  */
 export interface About {
@@ -451,6 +466,19 @@ export interface TabContact {
   name: string;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "general_informations_select".
+ */
+export interface GeneralInformationsSelect<T extends boolean = true> {
+  linkedin_url?: T;
+  x_twitter?: T;
+  github_url?: T;
+  email?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

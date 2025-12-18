@@ -11,6 +11,7 @@ import { Media } from './schema/media'
 import { Users } from './schema/users'
 import { About } from './page/about'
 import { TabAbout, TabBlog, TabContact, TabProjects } from './page/navbar'
+import { GeneralInformations } from './schema/general-Informations'
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
@@ -42,7 +43,7 @@ export default buildConfig({
   ],
 
   // Define and configure your globals in this array
-  globals: [About, TabAbout, TabProjects, TabBlog, TabContact],
+  globals: [GeneralInformations, About, TabAbout, TabProjects, TabBlog, TabContact],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',

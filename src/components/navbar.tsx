@@ -1,6 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/context/language";
+import { useGeneralInformations } from "@/features/default/hooks/use-general-informations";
 import { useNavbarLabels } from "@/features/default/hooks/use-navbar-labels";
 import Link from "next/link"
 import { FaCode, FaGithub, FaLinkedin } from "react-icons/fa"
@@ -8,9 +9,10 @@ import { FaCode, FaGithub, FaLinkedin } from "react-icons/fa"
 export function Navbar() {
   const { language, setLanguage } = useLanguage()
   const { tabAbout, tabBlog, tabProjects, tabContact } = useNavbarLabels(language);
+  const { informations, isLoading } = useGeneralInformations(language);
 
   return (
-    <nav className="bg-nav-bg py-4 px-4 md:px-6 sticky top-0 z-50">
+    <nav className="py-4 px-4 md:px-6 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 text-primary font-bold text-xl">
@@ -63,7 +65,7 @@ export function Navbar() {
           {/* Social Links */}
           <div className="flex items-center gap-6  font-bold">
             <a
-              href="https://facebook.com"
+              href={informations?.linkedin_url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-nav-text hover:text-nav-text-hover transition-colors"
@@ -72,7 +74,7 @@ export function Navbar() {
               <span>LinkedIn</span>
             </a>
             <a
-              href="https://github.com"
+              href={informations?.github_url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-nav-text hover:text-nav-text-hover transition-colors"
