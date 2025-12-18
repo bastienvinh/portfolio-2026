@@ -11,6 +11,13 @@ export default async function Home() {
   })
 
   return (
-    <div>{about.job_title}</div>
+    <div className="w-full h-full flex items-center">
+      <div className="">
+        <div className="text-3xl">
+          {about.presentation}
+        </div>
+        <div>{about.job_title}</div>
+      </div>
+    </div>
   );
 }

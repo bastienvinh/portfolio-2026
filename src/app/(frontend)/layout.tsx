@@ -24,7 +24,7 @@ export default function RootLayout({
         <LanguageProvider>
           <div className="container mx-auto h-screen flex flex-col gap-10">
             <Navbar />
-            <div>
+            <div className="grow">
               {children}
             </div>
           </div>

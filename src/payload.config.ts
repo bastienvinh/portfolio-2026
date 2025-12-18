@@ -5,13 +5,13 @@ import { buildConfig } from 'payload'
 
 import { en } from '@payloadcms/translations/languages/en'
 
-import { Technology } from './schema/technology'
-import { Projects } from './schema/projects'
-import { Media } from './schema/media'
-import { Users } from './schema/users'
-import { About } from './page/about'
-import { TabAbout, TabBlog, TabContact, TabProjects } from './page/navbar'
-import { GeneralInformations } from './schema/general-Informations'
+import { Technology } from './schema/collections/technology'
+import { Projects } from './schema/collections/projects'
+import { Media } from './schema/collections/media'
+import { Users } from './schema/single/users'
+import { About } from './schema/page/about'
+import { TabAbout, TabBlog, TabContact, TabProjects } from './schema/page/navbar'
+import { GeneralInformations } from './schema/single/general-Informations'
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
