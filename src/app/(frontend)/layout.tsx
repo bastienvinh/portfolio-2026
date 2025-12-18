@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/app/(frontend)/_components/navbar";
 import { LanguageProvider } from "@/context/language";
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Portfolio de Bastien Vinh, développeur full-stack passionné par les technologies web et mobiles. Découvrez mes projets, compétences et expériences.",
 }
 
-const inter = Inter({ subsets: ["latin"] })
+const montserrat = Montserrat({ subsets: ["latin"] })
 
 export default function RootLayout({
   children,
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased`}
+        className={`${montserrat.className} antialiased`}
       >
         <LanguageProvider>
           <div className="container mx-auto h-screen flex flex-col gap-10">
