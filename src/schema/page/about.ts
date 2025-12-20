@@ -4,6 +4,18 @@ export const About: GlobalConfig = {
   slug: "about",
   fields: [
     {
+      name: "fullname",
+      type: "text",
+      required: true,
+      localized: true,
+    },
+    {
+      name: "welcome_message",
+      type: "text",
+      required: true,
+      localized: true,
+    },
+    {
       name: "job_title",
       type: "text",
       required: true,

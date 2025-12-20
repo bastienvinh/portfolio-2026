@@ -16,7 +16,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full px-4 md:px-0 py-4 sticky top-0 z-50">
+    <nav className="w-full px-4 md:px-0 py-4">
       <div className=" flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 text-primary font-bold text-xl">

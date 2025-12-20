@@ -420,6 +420,8 @@ export interface GeneralInformation {
  */
 export interface About {
   id: number;
+  fullname: string;
+  welcome_message: string;
   job_title: string;
   presentation: string;
   technologies_text: string;
@@ -485,6 +487,8 @@ export interface GeneralInformationsSelect<T extends boolean = true> {
  * via the `definition` "about_select".
  */
 export interface AboutSelect<T extends boolean = true> {
+  fullname?: T;
+  welcome_message?: T;
   job_title?: T;
   presentation?: T;
   technologies_text?: T;
