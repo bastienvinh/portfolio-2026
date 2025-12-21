@@ -128,7 +128,9 @@ export function Navbar() {
             </div>
           </div>
 
-          <Button className="cursor-pointer">{tabContact?.name ?? "Contact"}</Button>
+          <Button className="cursor-pointer" asChild>
+            <Link href="/contact">{tabContact?.name ?? "Contact Me"}</Link>
+          </Button>
         </div>
       </div>
     </nav>

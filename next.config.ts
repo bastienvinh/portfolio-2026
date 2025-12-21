@@ -3,8 +3,7 @@ import { withPayload } from "@payloadcms/next/withPayload"
 
 const nextConfig: NextConfig = {
   /* config options here */
-  reactCompiler: false,
-  serverExternalPackages: ['file-type'],
+  reactCompiler: true,
 }
 
 export default withPayload(nextConfig)

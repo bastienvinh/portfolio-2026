@@ -1,10 +1,8 @@
 "use client"
 
-import { getPayload } from "payload"
-import config from "@payload-config"
 import { useLanguage } from "@/context/language"
 import { useAboutPage } from "@/features/about/hooks/use-about-page"
-import { Media, Technology, TechnologySelect } from "../../../payload-types"
+import { Media, Technology } from "../../../payload-types"
 import Image from "next/image"
 
 export default function Home() {

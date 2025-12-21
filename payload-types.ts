@@ -94,6 +94,7 @@ export interface Config {
   globals: {
     general_informations: GeneralInformation;
     about: About;
+    contact: Contact;
     tab_about: TabAbout;
     tab_projects: TabProject;
     tab_blog: TabBlog;
@@ -102,6 +103,7 @@ export interface Config {
   globalsSelect: {
     general_informations: GeneralInformationsSelect<false> | GeneralInformationsSelect<true>;
     about: AboutSelect<false> | AboutSelect<true>;
+    contact: ContactSelect<false> | ContactSelect<true>;
     tab_about: TabAboutSelect<false> | TabAboutSelect<true>;
     tab_projects: TabProjectsSelect<false> | TabProjectsSelect<true>;
     tab_blog: TabBlogSelect<false> | TabBlogSelect<true>;
@@ -431,6 +433,20 @@ export interface About {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact".
+ */
+export interface Contact {
+  id: number;
+  email_contact: string;
+  github_link?: string | null;
+  facebook_link?: string | null;
+  x_twitter_link?: string | null;
+  linkedin_link?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "tab_about".
  */
 export interface TabAbout {
@@ -493,6 +509,20 @@ export interface AboutSelect<T extends boolean = true> {
   presentation?: T;
   technologies_text?: T;
   technologies?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact_select".
+ */
+export interface ContactSelect<T extends boolean = true> {
+  email_contact?: T;
+  github_link?: T;
+  facebook_link?: T;
+  x_twitter_link?: T;
+  linkedin_link?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

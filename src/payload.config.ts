@@ -12,6 +12,7 @@ import { Users } from './schema/single/users'
 import { About } from './schema/page/about'
 import { TabAbout, TabBlog, TabContact, TabProjects } from './schema/page/navbar'
 import { GeneralInformations } from './schema/single/general-Informations'
+import { Contact } from './schema/page/contact'
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
@@ -43,7 +44,7 @@ export default buildConfig({
   ],
 
   // Define and configure your globals in this array
-  globals: [GeneralInformations, About, TabAbout, TabProjects, TabBlog, TabContact],
+  globals: [GeneralInformations, About, Contact, TabAbout, TabProjects, TabBlog, TabContact],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',
