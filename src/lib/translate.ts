@@ -19,16 +19,28 @@ export const Labels = {
     en: "Title",
     fr: "Titre",
   },
+  titlePlaceholder: {
+    en: "Title [Optional]",
+    fr: "Titre [Optionnel]",
+  },
   missingCaptchaMessage: {
     en: "Please complete the CAPTCHA to proceed.",
     fr: "Veuillez compléter le CAPTCHA pour continuer.",
   },
   placeholderMessage: {
     en: "Your message here",
-    fr: "Veuillez écrire message ici",
+    fr: "Veuillez écrire votre message ici",
   },
   socialnetworkLabel: {
     en: "Connect",
     fr: "Retrouvez-moi sur",
+  },
+  contactMeByMail: {
+    en: "Contact Me By Mail",
+    fr: "Contactez-moi par Email",
+  },
+  submit: {
+    en: "Submit",
+    fr: "Envoyer",
   }
 } as const
