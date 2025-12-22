@@ -8,13 +8,13 @@ import { useLanguage } from "@/context/language"
 import { useGetProjects } from "@/features/projects/hooks/use-projects"
 import { Labels } from "@/lib/translate"
 import { RichText } from '@payloadcms/richtext-lexical/react'
-import { Technology } from "../../../../payload-types"
+import { Technology } from "../../../../../payload-types"
 import { useEffect, useState } from "react"
 import { FaArrowUp } from "react-icons/fa"
 
 export default function ProjectsPage() {
   const { language } = useLanguage()
-  const { paginatedProjects, loading } = useGetProjects(language)
+  const { paginatedProjects } = useGetProjects(language)
   const [showArrow, setShowArrow] = useState(false)
 
   useEffect(() => {

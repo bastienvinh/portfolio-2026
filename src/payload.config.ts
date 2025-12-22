@@ -10,7 +10,7 @@ import { Projects } from './schema/collections/projects'
 import { Media } from './schema/collections/media'
 import { Users } from './schema/single/users'
 import { About } from './schema/page/about'
-import { TabAbout, TabBlog, TabContact, TabProjects } from './schema/page/navbar'
+import { NavbarConfig } from './schema/page/navbar'
 import { GeneralInformations } from './schema/single/general-Informations'
 import { Contact } from './schema/page/contact'
 
@@ -44,7 +44,7 @@ export default buildConfig({
   ],
 
   // Define and configure your globals in this array
-  globals: [GeneralInformations, About, Contact, TabAbout, TabProjects, TabBlog, TabContact],
+  globals: [GeneralInformations, About, Contact, NavbarConfig],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',

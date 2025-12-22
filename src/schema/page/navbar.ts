@@ -1,65 +1,39 @@
-import { GlobalConfig } from "payload";
+import { GlobalConfig } from "payload"
 
-export const TabAbout: GlobalConfig = {
-  slug: "tab_about",
+export const NavbarConfig: GlobalConfig = {
+  slug: "navbar_config",
   label: {
-    singular: "Traduction About",
-    plural: "Traductions About",
+    singular: "Navbar Configuration",
+    plural: "Navbar Configurations",
   },
   fields: [
     {
-      name: "name",
+      label: "Tab About",
+      name: "tab_about",
       type: "text",
       required: true,
       localized: true,
     },
-  ],
-}
-
-export const TabProjects: GlobalConfig = {
-  slug: "tab_projects",
-  label: {
-    singular: "Traduction Projects",
-    plural: "Traductions Projects",
-  },
-  fields: [
     {
-      name: "name",
+      label: "Tab Projects",
+      name: "tab_projects",
       type: "text",
       required: true,
       localized: true,
     },
-  ],
-}
-
-export const TabBlog: GlobalConfig = {
-  slug: "tab_blog",
-  label: {
-    singular: "Traduction Blog",
-    plural: "Traductions Blog",
-  },
-  fields: [
     {
-      name: "name",
+      label: "Tab Blog",
+      name: "tab_blog",
       type: "text",
       required: true,
       localized: true,
     },
-  ],
-}
-
-export const TabContact: GlobalConfig = {
-  slug: "tab_contact",
-  label: {
-    singular: "Traduction Contact",
-    plural: "Traductions Contact",
-  },
-  fields: [
     {
-      name: "name",
+      label: "Tab Contact",
+      name: "tab_contact",
       type: "text",
       required: true,
       localized: true,
-    },
+    }
   ],
 }

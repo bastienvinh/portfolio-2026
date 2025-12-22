@@ -1,19 +1,27 @@
 "use client"
 
-import { useLanguage } from "@/context/language";
-import { useGeneralInformations } from "@/features/default/hooks/use-general-informations";
-import { useNavbarLabels } from "@/features/default/hooks/use-navbar-labels";
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { FaCode, FaGithub, FaLinkedin } from "react-icons/fa"
-import { Button } from "../../../components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from "../../../components/ui/button"
+import { cn } from "@/lib/utils"
+import { LanguageSwitch, LanguageSwitchMini } from "./language-switch"
+import { useLanguage } from "@/context/language"
+import { useNavbarLabels } from "@/features/default/hooks/use-navbar-labels"
+import { useGeneralInformations } from "@/features/default/hooks/use-general-informations"
+import { usePathname } from "next/navigation"
 
 export function Navbar() {
-  const { language, setLanguage } = useLanguage()
-  const { tabAbout, tabBlog, tabProjects, tabContact } = useNavbarLabels(language);
-  const { informations } = useGeneralInformations(language);
-  const pathname = usePathname();
+
+  const { language } = useLanguage()
+  const { data } = useNavbarLabels(language)
+  const { tab_about, tab_blog, tab_contact, tab_projects } = data || {}
+  const { informations } = useGeneralInformations(language)
+  const { github_url, linkedin_url } = informations || {}
+  const pathname = usePathname()
+  // const pathname = await getServerPathname()
+  // const language = await getCurrentLanguage()
+  // const { tab_about, tab_blog, tab_contact, tab_projects } = await getNavBarLinks(language)
+  // const { github_url, linkedin_url } = await getGeneralInformations(language)
 
   return (
     <nav className="w-full px-4 md:px-0 py-4">
@@ -28,37 +36,24 @@ export function Navbar() {
         {/* Mobile Navigation - inline */}
         <div className="flex md:hidden items-center gap-3">
           <Link
-            href="/projects"
+            href={`/${language}/projects`}
             className="text-nav-text hover:text-nav-text-hover transition-colors text-sm"
           >
-            {tabProjects?.name ?? "Projects"}
+            {tab_projects ?? "Projects"}
           </Link>
 
           <Link
-            href="/blog"
+            href={`/${language}/blog`}
             className="text-nav-text hover:text-nav-text-hover transition-colors text-sm"
           >
-            {tabBlog?.name ?? "Blog"}
+            {tab_blog ?? "Blog"}
           </Link>
 
           {/* Language Toggle - Mobile */}
-          <div className="flex items-center bg-gray-800 rounded-full p-1">
-            <button onClick={() => setLanguage("fr")} className={cn("px-2 py-1 rounded-full text-white text-xs font-medium transition-colors", {
-              "bg-gray-700": language === "fr",
-              "text-gray-400": language !== "fr",
-            })}>
-              FR
-            </button>
-            <button onClick={() => setLanguage("en")} className={cn("px-2 py-1 rounded-full text-xs font-medium transition-colors", {
-              "bg-gray-700": language === "en",
-              "text-gray-400": language !== "en",
-            })}>
-              EN
-            </button>
-          </div>
+          <LanguageSwitchMini />
 
           <Button className="text-sm" asChild>
-            <Link href="/contact">{tabContact?.name ?? "Contact"}</Link>
+            <Link href={`${language}/contact`}>{tab_contact ?? "Contact"}</Link>
           </Button>
         </div>
 
@@ -67,7 +62,7 @@ export function Navbar() {
           {/* Social Links */}
           <div className="flex items-center gap-6  font-bold">
             <a
-              href={informations?.linkedin_url}
+              href={linkedin_url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-nav-text hover:text-nav-text-hover transition-colors"
@@ -76,7 +71,7 @@ export function Navbar() {
               <span>LinkedIn</span>
             </a>
             <a
-              href={informations?.github_url}
+              href={github_url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-nav-text hover:text-nav-text-hover transition-colors"
@@ -89,49 +84,36 @@ export function Navbar() {
           {/* Nav Links */}
           <div className="flex items-center gap-6">
             <Link
-              href="/"
+              href={`/${language}`}
               className={cn("flex items-center gap-1 text-nav-text hover:text-nav-text-hover transition-colors", {
                 "text-nav-text-hover": pathname === "/"
               })}
             >
-              {tabAbout?.name ?? "About Me"}
+              {tab_about ?? "About Me"}
             </Link>
             <Link
-              href="/projects"
+              href={`/${language}/projects`}
               className={cn("text-nav-text hover:text-nav-text-hover transition-colors", {
                 "text-nav-text-hover": pathname === "/projects"
               })}
             >
-              {tabProjects?.name ?? "Projects"}
+              {tab_projects ?? "Projects"}
             </Link>
             <Link
-              href="/blog"
+              href={`/${language}/blog`}
               className={cn("text-nav-text hover:text-nav-text-hover transition-colors", {
                 "text-nav-text-hover": pathname === "/blog"
               })}
             >
-              {tabBlog?.name ?? "Blog"}
+              {tab_blog ?? "Blog"}
             </Link>
 
             {/* Language Toggle - Desktop */}
-            <div className="flex items-center bg-gray-800 rounded-full p-1">
-              <button onClick={() => setLanguage("fr")} className={cn("px-3 py-1 rounded-full text-sm font-medium transition-colors cursor-pointer", {
-                "bg-gray-700 text-white": language === "fr",
-                "text-gray-400": language !== "fr",
-              })}>
-                Français
-              </button>
-              <button onClick={() => setLanguage("en")} className={cn("px-3 py-1 rounded-full  text-sm font-medium transition-colors cursor-pointer", {
-                "bg-gray-700 text-white": language === "en",
-                " text-gray-400": language !== "en",
-              })}>
-                English
-              </button>
-            </div>
+            <LanguageSwitch />
           </div>
 
           <Button className="cursor-pointer" asChild>
-            <Link href="/contact">{tabContact?.name ?? "Contact"}</Link>
+            <Link href={`/${language}/contact`}>{tab_contact ?? "Contact"}</Link>
           </Button>
         </div>
       </div>

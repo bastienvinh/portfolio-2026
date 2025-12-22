@@ -95,19 +95,13 @@ export interface Config {
     general_informations: GeneralInformation;
     about: About;
     contact: Contact;
-    tab_about: TabAbout;
-    tab_projects: TabProject;
-    tab_blog: TabBlog;
-    tab_contact: TabContact;
+    navbar_config: NavbarConfig;
   };
   globalsSelect: {
     general_informations: GeneralInformationsSelect<false> | GeneralInformationsSelect<true>;
     about: AboutSelect<false> | AboutSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
-    tab_about: TabAboutSelect<false> | TabAboutSelect<true>;
-    tab_projects: TabProjectsSelect<false> | TabProjectsSelect<true>;
-    tab_blog: TabBlogSelect<false> | TabBlogSelect<true>;
-    tab_contact: TabContactSelect<false> | TabContactSelect<true>;
+    navbar_config: NavbarConfigSelect<false> | NavbarConfigSelect<true>;
   };
   locale: 'fr' | 'en';
   user: User & {
@@ -495,41 +489,14 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tab_about".
+ * via the `definition` "navbar_config".
  */
-export interface TabAbout {
+export interface NavbarConfig {
   id: number;
-  name: string;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tab_projects".
- */
-export interface TabProject {
-  id: number;
-  name: string;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tab_blog".
- */
-export interface TabBlog {
-  id: number;
-  name: string;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tab_contact".
- */
-export interface TabContact {
-  id: number;
-  name: string;
+  tab_about: string;
+  tab_projects: string;
+  tab_blog: string;
+  tab_contact: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -577,40 +544,13 @@ export interface ContactSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tab_about_select".
+ * via the `definition` "navbar_config_select".
  */
-export interface TabAboutSelect<T extends boolean = true> {
-  name?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tab_projects_select".
- */
-export interface TabProjectsSelect<T extends boolean = true> {
-  name?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tab_blog_select".
- */
-export interface TabBlogSelect<T extends boolean = true> {
-  name?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tab_contact_select".
- */
-export interface TabContactSelect<T extends boolean = true> {
-  name?: T;
+export interface NavbarConfigSelect<T extends boolean = true> {
+  tab_about?: T;
+  tab_projects?: T;
+  tab_blog?: T;
+  tab_contact?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

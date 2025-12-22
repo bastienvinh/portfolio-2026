@@ -6,28 +6,11 @@ import config from "@payload-config";
 export async function getNavBarLinks(language: "fr" | "en") {
   const payload = await getPayload({ config })
 
-  const [about, projects, blog, contact] = await Promise.all([
-    payload.findGlobal({
-      slug: "tab_about",
-      locale: language,
-      fallbackLocale: false
-    }),
-    payload.findGlobal({
-      slug: "tab_projects",
-      locale: language,
-      fallbackLocale: false
-    }),
-    payload.findGlobal({
-      slug: "tab_blog",
-      locale: language,
-      fallbackLocale: false
-    }),
-    payload.findGlobal({
-      slug: "tab_contact",
-      locale: language,
-      fallbackLocale: false
-    }),
-  ]);
+  const navbar = await payload.findGlobal({
+    slug: "navbar_config",
+    locale: language,
+    fallbackLocale: "fr",
+  });
 
-  return { about, projects, blog, contact };
+  return navbar;
 }
