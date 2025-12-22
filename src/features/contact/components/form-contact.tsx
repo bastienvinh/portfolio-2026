@@ -35,6 +35,33 @@ export function FormContact() {
         )}
       />
 
+      <div className="flex flex-col md:flex-row gap-5 md:gap-10 w-full">
+        <FormField
+        name="firstname"
+        render={({ field }) => (
+          <FormItem className='grow'>
+            <FormLabel>{Labels.firstname[language] ?? "Firstname"}</FormLabel>
+            <FormControl>
+              <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.firstnamePlaceholder[language] ?? "Firstname"} {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      <FormField
+        name="lastname"
+        render={({ field }) => (
+          <FormItem className='grow'>
+            <FormLabel>{Labels.lastname[language] ?? "Lastname"}</FormLabel>
+            <FormControl>
+              <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.lastnamePlaceholder[language] ?? "Lastname"} {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+      </div>
+
       <FormField
         name="title"
         render={({ field }) => (

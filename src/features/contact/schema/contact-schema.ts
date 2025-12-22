@@ -18,6 +18,16 @@ export function getFormSchema(language: "fr" | "en") {
     }),
     captcha: z.enum(["solved"], {
       error: Labels.missingCaptchaMessage[language]
-    })
+    }),
+    firstname: z.string({
+      message: Labels.firstnameError[language],
+    }).min(2, {
+      message: Labels.firstnameError[language],
+    }),
+    lastname: z.string({
+      message: Labels.lastnameError[language],
+    }).min(2, {
+      message: Labels.lastnameError[language],
+    }),
   })
 }
