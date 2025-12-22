@@ -2,6 +2,10 @@ import type { GlobalConfig } from "payload"
 
 export const GeneralInformations: GlobalConfig = {
   slug: "general_informations",
+  label: {
+    singular: "General Information",
+    plural: "General Informations",
+  },
   fields: [
     {
       name: "linkedin_url",

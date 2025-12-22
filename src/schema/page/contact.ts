@@ -2,6 +2,10 @@ import type { GlobalConfig } from "payload"
 
 export const Contact: GlobalConfig = {
   slug: "contact",
+  label: {
+    singular: "Page Contact",
+    plural: "Pages Contact",
+  },
   fields: [
     {
       label: "Email",

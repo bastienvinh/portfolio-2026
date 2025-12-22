@@ -1,7 +1,36 @@
+
 import type {  CollectionConfig  } from "payload"
+
+// Slug validation: remove spaces and line returns, support localized (array) and single value
+function validateSlug(value: string | string[] | null | undefined): true | string {
+  if (Array.isArray(value)) {
+    for (const v of value) {
+      const res = validateSlug(v);
+      if (res !== true) return res
+    }
+    return true
+  }
+  if (typeof value !== 'string') return 'Slug must be a string'
+  const cleaned = value.replace(/[\s\r\n]+/g, '-')
+  if (cleaned !== value) {
+    return 'Slug cannot contain spaces or line returns.'
+  }
+  if (!cleaned.length) {
+    return 'Slug cannot be empty.'
+  }
+  return true
+}
 
 export const Projects: CollectionConfig = {
   slug: "projects",
+  labels: {
+    singular: "Project",
+    plural: "Projects",
+  },
+  disableDuplicate: true,
+  access: {
+    read: () => true,
+  },
   fields: [
     {
       label: "Slug",
@@ -9,7 +38,8 @@ export const Projects: CollectionConfig = {
       type: "text",
       required: true,
       localized: true,
-      unique: true
+      unique: true,
+      validate: validateSlug
     },
     {
       label: "Title",
@@ -17,6 +47,21 @@ export const Projects: CollectionConfig = {
       type: "text",
       required: true,
       localized: true
+    },
+    {
+      label: "Starting Date",
+      name: "starting_date",
+      type: "date",
+      defaultValue: new Date().toISOString(),
+      required: true,
+      localized: false
+    },
+    {
+      label: "Ending Date",
+      name: "ending_date",
+      type: "date",
+      required: false,
+      localized: false
     },
     {
       label: "Summary",

@@ -2,6 +2,13 @@ import type { CollectionConfig } from "payload"
 
 export const Technology: CollectionConfig = {
   slug: "technology",
+  labels: {
+    singular: "Technology",
+    plural: "Technologies",
+  },
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: "name",
   },

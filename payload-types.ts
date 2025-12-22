@@ -169,6 +169,8 @@ export interface Project {
   id: number;
   slug: string;
   title: string;
+  starting_date: string;
+  ending_date?: string | null;
   summary: string;
   overview?: {
     root: {
@@ -366,6 +368,8 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ProjectsSelect<T extends boolean = true> {
   slug?: T;
   title?: T;
+  starting_date?: T;
+  ending_date?: T;
   summary?: T;
   overview?: T;
   challenges_and_solutions?: T;
