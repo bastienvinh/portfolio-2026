@@ -1,9 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react";
-import { useLanguage } from "@/context/language";
-import { getContactInfo } from "../queries/get-contact";
-import { Contact } from "../../../../payload-types";
+import { useEffect, useState } from "react"
+import { getContactInfo } from "../queries/get-contact"
+import { Contact } from "../../../../payload-types"
 
 export function useContactPage(language: "fr" | "en" ) {
 	const [data, setData] = useState<Contact | null>(null);

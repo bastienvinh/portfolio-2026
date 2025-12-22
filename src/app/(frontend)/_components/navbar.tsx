@@ -57,7 +57,9 @@ export function Navbar() {
             </button>
           </div>
 
-          <Button className="text-sm">Contact</Button>
+          <Button className="text-sm" asChild>
+            <Link href="/contact">{tabContact?.name ?? "Contact"}</Link>
+          </Button>
         </div>
 
         {/* Desktop Navigation */}
@@ -129,7 +131,7 @@ export function Navbar() {
           </div>
 
           <Button className="cursor-pointer" asChild>
-            <Link href="/contact">{tabContact?.name ?? "Contact Me"}</Link>
+            <Link href="/contact">{tabContact?.name ?? "Contact"}</Link>
           </Button>
         </div>
       </div>

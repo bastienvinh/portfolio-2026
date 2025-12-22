@@ -4,20 +4,10 @@ import { ActionState, fromErrorToActionState, toActionState } from "@/components
 
 export async function sendMailAction(state: ActionState, formData: FormData): Promise<ActionState<unknown>> {
   try {
-		
-
-
-		console.log(formData)
-		// Ici, on pourrait faire l'upsert dans la base de données
-		// On verifie qu'il est unique
-
-		// const isAlreadyTaken = await AnalyticsManager.getInstance().isNameExists(name)
-
-		// if (isAlreadyTaken) {
-		// 	return toActionState("ERROR", "Le nom choisi est déjà utilisé.")
-		// }
-
-		// await AnalyticsManager.getInstance().upsertAnalytic(id ? Number(id) : null, name)
+		const email = formData.get("email")
+    const subject = formData.get("subject")
+    const message = formData.get("message")
+    const fullname = formData.get("firstname")
 
 	}
   catch (error) {

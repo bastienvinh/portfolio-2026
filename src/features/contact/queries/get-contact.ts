@@ -10,7 +10,7 @@ export async function getContactInfo(language: "fr" | "en") {
       slug: "contact",
       locale: language,
       fallbackLocale: false
-    });
+    })
   
     return informations;
 }

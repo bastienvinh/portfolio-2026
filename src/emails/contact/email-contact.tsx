@@ -25,8 +25,13 @@ const EmailContactTemplate = ({ email, title, message, fullname }: EmailVerifPro
       <Preview>New contact form submission from {fullname}</Preview>
       <Tailwind>
         <Body className="bg-black font-sans">
-          <Container className="mx-auto py-10 px-5 max-w-[600px]">
+          <Container className="mx-auto py-10 px-5 max-w-150">
             <Heading className="text-white text-3xl font-bold m-0 mb-8">New Contact Form Submission</Heading>
+
+            <Section className="my-5">
+              <Text className="text-zinc-400 text-xs font-semibold uppercase tracking-wider m-0 mb-2">From:</Text>
+              <Text className="text-white text-base m-0">{title}</Text>
+            </Section>
 
             <Section className="my-5">
               <Text className="text-zinc-400 text-xs font-semibold uppercase tracking-wider m-0 mb-2">From:</Text>

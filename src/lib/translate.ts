@@ -7,21 +7,21 @@ export const Labels = {
     en: "Email must be at least 5 characters.",
     fr: "L'email doit comporter au moins 5 caractères.",
   },
-  titleError: {
-    en: "Title must be at least 4 characters.",
-    fr: "Le titre doit comporter au moins 4 caractères.",
+  subjectError: {
+    en: "Subject must be at least 4 characters.",
+    fr: "Le sujet doit comporter au moins 4 caractères.",
   },
   messageError: {
     en: "Message must be at least 10 characters.",
     fr: "Le message doit comporter au moins 10 caractères.",
   },
-  title: {
-    en: "Title",
-    fr: "Titre",
+  subject: {
+    en: "Subject",
+    fr: "Sujet",
   },
-  titlePlaceholder: {
-    en: "Title [Optional]",
-    fr: "Titre [Optionnel]",
+  subjectPlaceholder: {
+    en: "Subject [Optional]",
+    fr: "Sujet [Optionnel]",
   },
   missingCaptchaMessage: {
     en: "Please complete the CAPTCHA to proceed.",

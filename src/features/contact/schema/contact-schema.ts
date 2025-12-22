@@ -9,7 +9,7 @@ export function getFormSchema(language: "fr" | "en") {
       message: Labels.emailError[language],
     }),
     title: z.string().min(4, {
-      message: Labels.titleError[language],
+      message: Labels.subjectError[language],
     }).optional(),
     message: z.string({
       message: Labels.messageError[language],

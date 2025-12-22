@@ -35,40 +35,71 @@ export function FormContact() {
         )}
       />
 
-      <div className="flex flex-col md:flex-row gap-5 md:gap-10 w-full">
-        <FormField
-        name="firstname"
-        render={({ field }) => (
-          <FormItem className='grow'>
-            <FormLabel>{Labels.firstname[language] ?? "Firstname"}</FormLabel>
-            <FormControl>
-              <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.firstnamePlaceholder[language] ?? "Firstname"} {...field} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      <FormField
-        name="lastname"
-        render={({ field }) => (
-          <FormItem className='grow'>
-            <FormLabel>{Labels.lastname[language] ?? "Lastname"}</FormLabel>
-            <FormControl>
-              <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.lastnamePlaceholder[language] ?? "Lastname"} {...field} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      </div>
+      {language === "en" ? (
+        <div className="flex flex-col md:flex-row gap-5 md:gap-10 w-full">
+          <FormField
+            name="firstname"
+            render={({ field }) => (
+              <FormItem className='grow'>
+                <FormLabel>{Labels.firstname[language] ?? "Firstname"}</FormLabel>
+                <FormControl>
+                  <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.firstnamePlaceholder[language] ?? "Firstname"} {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="lastname"
+            render={({ field }) => (
+              <FormItem className='grow'>
+                <FormLabel>{Labels.lastname[language] ?? "Lastname"}</FormLabel>
+                <FormControl>
+                  <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.lastnamePlaceholder[language] ?? "Lastname"} {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+      ) : (
+        <div className="flex flex-col md:flex-row gap-5 md:gap-10 w-full">
+          <FormField
+            name="lastname"
+            render={({ field }) => (
+              <FormItem className='grow'>
+                <FormLabel>{Labels.lastname[language] ?? "Lastname"}</FormLabel>
+                <FormControl>
+                  <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.lastnamePlaceholder[language] ?? "Lastname"} {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            name="firstname"
+            render={({ field }) => (
+              <FormItem className='grow'>
+                <FormLabel>{Labels.firstname[language] ?? "Firstname"}</FormLabel>
+                <FormControl>
+                  <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.firstnamePlaceholder[language] ?? "Firstname"} {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+        </div>
+      )}
 
       <FormField
         name="title"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{Labels.title[language] ?? "Title"}</FormLabel>
+            <FormLabel>{Labels.subject[language] ?? "Title"}</FormLabel>
             <FormControl>
-              <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.titlePlaceholder[language] ?? "Title [Optional]"} {...field} />
+              <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.subjectPlaceholder[language] ?? "Title [Optional]"} {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>
