@@ -19,7 +19,6 @@ export async function sendMailAction(state: ActionState, formData: FormData): Pr
       return toActionState("ERROR", Labels.captchaError[language] ?? "Captcha error, please try again." )
     }
 
-    console.log("Sending email contact...")
     await sendEmailContact(language, email, fullname, message, subject ?? undefined)
 	}
   catch (error) {
@@ -27,6 +26,5 @@ export async function sendMailAction(state: ActionState, formData: FormData): Pr
 		return fromErrorToActionState(error)
 	}
 
-  console.log("Email contact sent successfully.")
 	return toActionState("SUCCESS", Labels.emailSentSuccess[language] ?? "The email has been sent successfully.")
 }

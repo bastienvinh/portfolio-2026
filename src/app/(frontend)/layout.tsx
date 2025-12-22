@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "sonner"
 import { Navbar } from "@/app/(frontend)/_components/navbar"
@@ -10,7 +10,15 @@ export const metadata: Metadata = {
   description: "Portfolio de Bastien Vinh, développeur full-stack passionné par les technologies web et mobiles. Découvrez mes projets, compétences et expériences.",
 }
 
-const inter = Inter({ subsets: ["latin"] })
+const _spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+const _jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+})
 
 export default function RootLayout({
   children,
@@ -20,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased`}
+        className={`${_spaceGrotesk.variable} ${_jetbrainsMono.variable} font-sans antialiased`}
       >
         <LanguageProvider>
           <div className="container mx-auto min-h-screen grid grid-rows-[auto_1fr] gap-5 md:gap-10 overflow-hidden">

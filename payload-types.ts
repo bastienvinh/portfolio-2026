@@ -167,8 +167,10 @@ export interface User {
  */
 export interface Project {
   id: number;
+  slug: string;
   title: string;
-  content?: {
+  summary: string;
+  overview?: {
     root: {
       type: string;
       children: {
@@ -183,19 +185,41 @@ export interface Project {
     };
     [k: string]: unknown;
   } | null;
+  challenges_and_solutions: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  outcomes?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  code_url?: string | null;
+  live_url?: string | null;
+  cover_image: number | Media;
+  miniature_image_list: number | Media;
   technologies?: (number | Technology)[] | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "technology".
- */
-export interface Technology {
-  id: number;
-  name: string;
-  light_mode_image: number | Media;
-  dark_mode_image: number | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -217,6 +241,18 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "technology".
+ */
+export interface Technology {
+  id: number;
+  name: string;
+  light_mode_image: number | Media;
+  dark_mode_image: number | Media;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -328,8 +364,16 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "projects_select".
  */
 export interface ProjectsSelect<T extends boolean = true> {
+  slug?: T;
   title?: T;
-  content?: T;
+  summary?: T;
+  overview?: T;
+  challenges_and_solutions?: T;
+  outcomes?: T;
+  code_url?: T;
+  live_url?: T;
+  cover_image?: T;
+  miniature_image_list?: T;
   technologies?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -1,5 +1,3 @@
-import { email } from "zod";
-
 export const Labels = {
   email: {
     en: "Email",
@@ -77,4 +75,16 @@ export const Labels = {
     en: "The email has been sent successfully.",
     fr: "L'email a été envoyé avec succès.",
   },
+  page: {
+    projects: {
+      projects: {
+        en: "Projects",
+        fr: "Projets",
+      },
+      introduction: {
+        en: "Here are some of my projects showcasing my skills and expertise.",
+        fr: "Voici quelques-uns de mes projets mettant en avant mes compétences et mon expertise.",
+      }
+    }
+  }
 } as const

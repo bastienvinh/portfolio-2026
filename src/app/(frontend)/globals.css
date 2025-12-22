@@ -4,6 +4,10 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+
+  --font-sans: var(--font-sans), "Space Grotesk", system-ui, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+
   /* Portfolio Dark Theme - matching the example */
   --radius: 0.625rem;
   

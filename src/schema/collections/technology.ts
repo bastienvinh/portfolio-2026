@@ -7,11 +7,13 @@ export const Technology: CollectionConfig = {
   },
   fields: [
     {
+      label: "Name",
       name: "name",
       type: "text",
       required: true,
     },
     {
+      label: "Light Mode Image",
       name: "light_mode_image",
       type: "upload",
       relationTo: "media",
@@ -21,6 +23,7 @@ export const Technology: CollectionConfig = {
       },
     },
     {
+      label: "Dark Mode Image",
       name: "dark_mode_image",
       type: "upload",
       relationTo: "media",

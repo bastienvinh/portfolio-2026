@@ -8,6 +8,7 @@ export const Media: CollectionConfig = {
   },
   fields: [
     {
+      label: "Alternative Text",
       name: "alt",
       type: "text"
     },
