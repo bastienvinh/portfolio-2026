@@ -8,7 +8,7 @@ export function getFormSchema(language: "fr" | "en") {
     }).min(5, {
       message: Labels.emailError[language],
     }),
-    title: z.string().min(4, {
+    subject: z.string().min(4, {
       message: Labels.subjectError[language],
     }).optional(),
     message: z.string({

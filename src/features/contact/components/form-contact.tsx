@@ -21,7 +21,9 @@ export function FormContact() {
   const [, setStatus] = useState<"idle" | "expired" | "solved" | "error">("idle");
 
   return (
-    <Form formSchema={formSchema} serverAction={sendMailAction} >
+    <Form formSchema={formSchema} serverAction={sendMailAction}>
+      <Input type="hidden" name="language" value={language} />
+
       <FormField
         name="email"
         render={({ field }) => (
@@ -94,12 +96,12 @@ export function FormContact() {
       )}
 
       <FormField
-        name="title"
+        name="subject"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>{Labels.subject[language] ?? "Title"}</FormLabel>
+            <FormLabel>{Labels.subject[language] ?? "Subject"}</FormLabel>
             <FormControl>
-              <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.subjectPlaceholder[language] ?? "Title [Optional]"} {...field} />
+              <Input className="text-sm font-semibold placeholder:uppercase text-zinc-500" placeholder={Labels.subjectPlaceholder[language] ?? "Subject [Optional]"} {...field} />
             </FormControl>
             <FormMessage />
           </FormItem>

@@ -1,3 +1,5 @@
+import { email } from "zod";
+
 export const Labels = {
   email: {
     en: "Email",
@@ -66,5 +68,13 @@ export const Labels = {
   lastnamePlaceholder: {
     en: "Last Name",
     fr: "Nom",
+  },
+  captchaError: {
+    en: "The captcha is incorrectly filled.",
+    fr: "Le captcha est mal renseigné.",
+  },
+  emailSentSuccess: {
+    en: "The email has been sent successfully.",
+    fr: "L'email a été envoyé avec succès.",
   },
 } as const

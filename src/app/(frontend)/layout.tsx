@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Navbar } from "@/app/(frontend)/_components/navbar";
-import { LanguageProvider } from "@/context/language";
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
+import { Toaster } from "sonner"
+import { Navbar } from "@/app/(frontend)/_components/navbar"
+import { LanguageProvider } from "@/context/language"
 
 export const metadata: Metadata = {
   title: "Bastien Vinh - Portfolio",
@@ -28,6 +29,7 @@ export default function RootLayout({
               {children}
             </div>
           </div>
+          <Toaster position="bottom-right" />
         </LanguageProvider>
       </body>
     </html>
