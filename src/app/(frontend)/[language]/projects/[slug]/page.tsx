@@ -19,7 +19,7 @@ export default async function ProjectsPage() {
   const project = await getProject(language, slug!)
 
   return (
-    <main className="p-4 md: p-0">
+    <main className="p-4 md:p-0">
       <Link
         href={`/${language}/projects`}
         className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 group"
