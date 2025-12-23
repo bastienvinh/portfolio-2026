@@ -18,10 +18,6 @@ export function Navbar() {
   const { informations } = useGeneralInformations(language)
   const { github_url, linkedin_url } = informations || {}
   const pathname = usePathname()
-  // const pathname = await getServerPathname()
-  // const language = await getCurrentLanguage()
-  // const { tab_about, tab_blog, tab_contact, tab_projects } = await getNavBarLinks(language)
-  // const { github_url, linkedin_url } = await getGeneralInformations(language)
 
   return (
     <nav className="w-full px-4 md:px-0 py-4">
@@ -53,7 +49,7 @@ export function Navbar() {
           <LanguageSwitchMini />
 
           <Button className="text-sm" asChild>
-            <Link href={`${language}/contact`}>{tab_contact ?? "Contact"}</Link>
+            <Link href={`/${language}/contact`}>{tab_contact ?? "Contact"}</Link>
           </Button>
         </div>
 

@@ -13,6 +13,7 @@ import { About } from './schema/page/about'
 import { NavbarConfig } from './schema/page/navbar'
 import { GeneralInformations } from './schema/single/general-Informations'
 import { Contact } from './schema/page/contact'
+import { Articles } from './schema/collections/article'
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
@@ -41,6 +42,7 @@ export default buildConfig({
     Projects,
     Technology,
     Media,
+    Articles
   ],
 
   // Define and configure your globals in this array

@@ -1,8 +1,6 @@
 "use server"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { getCurrentLanguage } from "@/features/default/queries/get-language"
-import { getSlug } from "@/features/default/queries/get-slug"
 import { getProject } from "@/features/projects/queries/get-project"
 import { RichText } from "@payloadcms/richtext-lexical/react"
 import dayjs from "dayjs"
@@ -12,10 +10,9 @@ import { Media, Technology } from "../../../../../../payload-types"
 import Image from "next/image"
 import { Labels } from "@/lib/translate"
 
-export default async function ProjectsPage() {
+export default async function ProjectsPage({ params }: { params: Promise<{ slug: string, language: "fr" | "en" }>}) {
 
-  const language = await getCurrentLanguage()
-  const slug = await getSlug()
+  const { language, slug } = await params
   const project = await getProject(language, slug!)
 
   return (

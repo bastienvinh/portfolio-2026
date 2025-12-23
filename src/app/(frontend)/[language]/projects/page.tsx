@@ -12,7 +12,7 @@ import { Technology } from "../../../../../payload-types"
 import { useEffect, useState } from "react"
 import { FaArrowUp } from "react-icons/fa"
 
-export default function ProjectsPage() {
+export default function ProjectsPage({ params }: { params: { language: "fr" | "en" } }) {
   const { language } = useLanguage()
   const { paginatedProjects } = useGetProjects(language)
   const [showArrow, setShowArrow] = useState(false)

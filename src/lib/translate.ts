@@ -103,6 +103,16 @@ export const Labels = {
         en: "View all projects",
         fr: "Voir tous les projets"
       }
+    },
+    articles: {
+      all: {
+        en: "Blog",
+        fr: "Tous les Articles"
+      },
+      description: {
+        en: "Thoughts, tutorials, and insights about web development.",
+        fr: "Pensées, tutoriels et idées sur le développement informatique."
+      }
     }
   }
 } as const

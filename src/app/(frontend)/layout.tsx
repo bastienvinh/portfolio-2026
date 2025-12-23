@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google"
+import { JetBrains_Mono, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "sonner"
 import { Navbar } from "@/app/(frontend)/_components/navbar"
