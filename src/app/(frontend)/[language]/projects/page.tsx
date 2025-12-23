@@ -1,46 +1,32 @@
-"use client"
+"use server"
 
 import Link from "next/link"
 import dayjs from "dayjs"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { useLanguage } from "@/context/language"
-import { useGetProjects } from "@/features/projects/hooks/use-projects"
 import { Labels } from "@/lib/translate"
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { Technology } from "../../../../../payload-types"
-import { useEffect, useState } from "react"
-import { FaArrowUp } from "react-icons/fa"
+import { ScrollPage } from "@/components/scrollpage"
+import { getProjects } from "@/features/projects/queries/get-projects"
 
-export default function ProjectsPage({ params }: { params: { language: "fr" | "en" } }) {
-  const { language } = useLanguage()
-  const { paginatedProjects } = useGetProjects(language)
-  const [showArrow, setShowArrow] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowArrow(window.scrollY > 200)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+export default async function ProjectsPage({ params }: { params: Promise<{ language: "fr" | "en" }>}) {
+  const { language } = await params
+  const paginatedProjects = await getProjects(language)
 
   return (
     <div id="projects" className="min-h-full max-w-3xl mx-auto flex flex-col gap-10 p-4 md:p-0">
-      <div className="w-full flex flex-col gap-5">
-        <h1 className="text-5xl font-bold">{Labels.page.projects.projects[language] ?? "Projects"}</h1>
-        <p className="text-lg">
-          {Labels.page.projects.introduction[language] ?? "Coming soon..."}
-        </p>
-      </div>
+      <ScrollPage>
+        <div className="w-full flex flex-col gap-5">
+          <h1 className="text-5xl font-bold">{Labels.page.projects.projects[language] ?? "Projects"}</h1>
+          <p className="text-lg">
+            {Labels.page.projects.introduction[language] ?? "Coming soon..."}
+          </p>
+        </div>
 
-      <section id="projects" className="flex flex-col gap-5 pb-5">
-        {paginatedProjects?.docs.map((project, index) => (
-           <Link key={index} href={`/${language}/projects/${project.slug}`}>
+        <section id="projects" className="flex flex-col gap-5 pb-5">
+          {paginatedProjects?.docs.map((project, index) => (
+            <Link key={index} href={`/${language}/projects/${project.slug}`}>
               <Card className="border-2 hover:border-primary/50 transition-all hover:shadow-lg group cursor-pointer">
                 <CardHeader>
                   <div className="flex items-start justify-between gap-4">
@@ -69,18 +55,9 @@ export default function ProjectsPage({ params }: { params: { language: "fr" | "e
                 </CardContent>
               </Card>
             </Link>
-        ))}
-      </section>
-
-      {showArrow && (
-        <button
-          onClick={scrollToTop}
-          aria-label="Back to top"
-          className="fixed bottom-8 right-8 z-50 bg-primary text-white rounded-full p-3 shadow-lg hover:bg-primary/80 transition-colors"
-        >
-          <FaArrowUp />
-        </button>
-      )}
+          ))}
+        </section>
+      </ScrollPage>
     </div>
   );
 }
