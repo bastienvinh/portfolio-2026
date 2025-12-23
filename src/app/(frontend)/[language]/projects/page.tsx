@@ -40,7 +40,7 @@ export default function ProjectsPage() {
 
       <section id="projects" className="flex flex-col gap-5 pb-5">
         {paginatedProjects?.docs.map((project, index) => (
-           <Link key={index} href={`/projects/${project.slug}`}>
+           <Link key={index} href={`/${language}/projects/${project.slug}`}>
               <Card className="border-2 hover:border-primary/50 transition-all hover:shadow-lg group cursor-pointer">
                 <CardHeader>
                   <div className="flex items-start justify-between gap-4">
@@ -78,7 +78,6 @@ export default function ProjectsPage() {
           aria-label="Back to top"
           className="fixed bottom-8 right-8 z-50 bg-primary text-white rounded-full p-3 shadow-lg hover:bg-primary/80 transition-colors"
         >
-          {/* Up arrow Unicode, or replace with an SVG */}
           <FaArrowUp />
         </button>
       )}

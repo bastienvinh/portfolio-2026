@@ -85,6 +85,24 @@ export const Labels = {
         en: "Here are some of my projects showcasing my skills and expertise.",
         fr: "Voici quelques-uns de mes projets mettant en avant mes compétences et mon expertise.",
       }
+    },
+    page: {
+      usedTechnologies: {
+        en: "Technologies Used",
+        fr: "Technologies Utilisées"
+      },
+      overview: {
+        en: "Project Overview",
+        fr: "Présentation"
+      },
+      keyOutcomes: {
+        en: "Key Outcomes",
+        fr: "Résultats Clés"
+      },
+      allProjects: {
+        en: "View all projects",
+        fr: "Voir tous les projets"
+      }
     }
   }
 } as const
