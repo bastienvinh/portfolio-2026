@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: azerty
       POSTGRES_DB: portfolio
     ports:
-      - 7000:5432
+      - 9001:5432
     volumes:
       - pgdata:/var/lib/postgresql/data
 

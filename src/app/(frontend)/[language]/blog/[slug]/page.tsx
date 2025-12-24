@@ -1,7 +1,7 @@
 "use server"
 
 import { ScrollPage } from "@/components/scrollpage"
-import { getPost } from "@/features/blog/get-post"
+import { getPost } from "@/features/blog/queries/get-post"
 import { Labels } from "@/lib/translate"
 import { RichText } from "@payloadcms/richtext-lexical/react"
 import dayjs from "dayjs"

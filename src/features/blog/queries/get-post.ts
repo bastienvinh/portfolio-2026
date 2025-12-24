@@ -1,6 +1,6 @@
 import { getPayload } from "payload"
 import config from "@payload-config"
-import { Article } from "../../../payload-types"
+import { Article } from "../../../../payload-types"
 
 export async function getPost(language: "fr" | "en", slug: string): Promise<Article | null> {
   const payload = await getPayload({ config })

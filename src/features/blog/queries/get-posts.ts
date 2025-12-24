@@ -1,7 +1,8 @@
 import { getPayload } from "payload"
 import config from "@payload-config"
+import { ParseSearchParams } from "../search-params"
 
-export async function getArticles(language: "fr" | "en", limit = 100, offset = 0) {
+export async function getArticles(language: "fr" | "en", searchParams: ParseSearchParams) {
   const payload = await getPayload({ config })
   
   const paginationPosts = await payload.find({
@@ -9,8 +10,8 @@ export async function getArticles(language: "fr" | "en", limit = 100, offset = 0
     locale: language,
     fallbackLocale: "fr",
     sort: "-createdAt",
-    limit,
-    page: offset / limit + 1,
+    limit: searchParams.size ?? 5,
+    page: searchParams.page ?? 0,
   })
 
   return paginationPosts

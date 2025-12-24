@@ -1,15 +1,27 @@
 "use server"
 
-import { ScrollPage } from "@/components/scrollpage"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { getArticles } from "@/features/blog/get-posts"
+import { getArticles } from "@/features/blog/queries/get-posts"
+import { ParseSearchParams } from "@/features/blog/search-params"
 import { Labels } from "@/lib/translate"
 import dayjs from "dayjs"
 import Link from "next/link"
+import { BlogPagination } from "./blog-pagination"
+import { ScrollPage } from "@/components/scrollpage"
 
-export default async function BlogPage({ params }: { params: Promise<{ slug: string, language: "fr" | "en" }>}) {
-  const { language } = await params
-  const paginationPage = await getArticles(language)
+type BlogPageProps = {
+  params: Promise<{ language: "fr" | "en" }>
+  searchParams: Promise<ParseSearchParams>
+}
+
+export default async function BlogPage({ params, searchParams }: BlogPageProps) {
+  const { language } = await params;
+  const sp = await searchParams;
+  const paginationPage = await getArticles(language, sp);
+
+  // Pagination logic
+  const currentPage = Number(paginationPage.page || 1);
+  const totalPages = Number(paginationPage.totalPages);
 
   return (
     <section className="p-4 md:p-0 max-w-3xl mx-auto">
@@ -29,7 +41,7 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
                   <CardHeader className="space-y-3">
                     <div className="flex items-start justify-between gap-4">
                       <CardTitle className="text-2xl group-hover:text-primary transition-colors">{post.title}</CardTitle>
-                      <span className="text-sm text-muted-foreground font-mono whitespace-nowrap">{dayjs(post.createdAt).format( language === "fr" ? "DD/MM/YYYY" : "YYYY-MM-DD")}</span>
+                      <span className="text-sm text-muted-foreground font-mono whitespace-nowrap">{dayjs(post.createdAt).format(language === "fr" ? "DD/MM/YYYY" : "YYYY-MM-DD")}</span>
                     </div>
                     <CardDescription className="text-base leading-relaxed">Description</CardDescription>
                   </CardHeader>
@@ -38,7 +50,9 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
             </Link>
           ))}
         </div>
+
+        <BlogPagination currentPage={currentPage} totalPages={totalPages} language={language} />
       </ScrollPage>
     </section>
-  )
+  );
 }
