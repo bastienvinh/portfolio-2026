@@ -43,7 +43,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
 
   // Determine initial language: URL > localStorage > default (fr)
   const getInitialLanguage = useCallback(() => {
-    return getLanguageFromPath() || getStoredLanguage() || "fr";
+    return getLanguageFromPath() ?? getStoredLanguage() ?? "fr";
   }, [getLanguageFromPath]);
 
   // Sync with localStorage changes from other tabs
@@ -58,7 +58,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   }, []);
 
   const getSnapshot = useCallback(() => {
-    return getStoredLanguage() || getLanguageFromPath() || "fr";
+    return getStoredLanguage() ?? getLanguageFromPath() ?? "fr";
   }, [getLanguageFromPath]);
 
   const getServerSnapshot = useCallback(() => "fr", []);
@@ -72,15 +72,15 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   }, [storedLanguage]);
 
   // On mount, update URL to match localStorage language if different
-  useEffect(() => {
-    const stored = getStoredLanguage();
-    const urlLang = getLanguageFromPath();
-    if (stored && urlLang !== stored) {
-      const newPath = pathname.replace(/^\/(fr|en)/, `/${stored}`);
-      router.replace(newPath + window.location.search + window.location.hash);
-      setLanguageState(stored);
-    }
-  }, []); // Only run on mount
+  // useEffect(() => {
+  //   const stored = getStoredLanguage();
+  //   const urlLang = getLanguageFromPath();
+  //   if (stored && urlLang !== stored) {
+  //     const newPath = pathname.replace(/^\/(fr|en)/, `/${stored}`);
+  //     router.replace(newPath + window.location.search + window.location.hash);
+  //     setLanguageState(stored);
+  //   }
+  // }, []); // Only run on mount
 
   // Save to localStorage and update URL when language changes
   const setLanguage = useCallback((lang: Language) => {

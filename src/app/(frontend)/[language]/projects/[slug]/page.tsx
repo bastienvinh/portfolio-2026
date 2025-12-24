@@ -9,11 +9,16 @@ import { FaArrowLeft, FaGithub } from "react-icons/fa"
 import { Media, Technology } from "../../../../../../payload-types"
 import Image from "next/image"
 import { Labels } from "@/lib/translate"
+import { notFound } from "next/navigation"
 
 export default async function ProjectsPage({ params }: { params: Promise<{ slug: string, language: "fr" | "en" }>}) {
 
   const { language, slug } = await params
-  const project = await getProject(language, slug!)
+  const project = await getProject(language, slug)
+
+  if (!project) {
+    notFound()
+  }
 
   return (
     <main className="p-4 md:p-0">

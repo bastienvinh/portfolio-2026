@@ -19,7 +19,7 @@ export default async function ProjectsPage({ params }: { params: Promise<{ langu
       <ScrollPage>
         <div className="w-full flex flex-col gap-5">
           <h1 className="text-5xl font-bold">{Labels.page.projects.projects[language] ?? "Projects"}</h1>
-          <p className="text-lg">
+          <p className="text-lg text-muted-foreground">
             {Labels.page.projects.introduction[language] ?? "Coming soon..."}
           </p>
         </div>

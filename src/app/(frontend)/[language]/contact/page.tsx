@@ -1,17 +1,17 @@
-"use client"
+"use server"
 
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { useLanguage } from "@/context/language";
 import { FormContact } from "@/features/contact/components/form-contact";
 import { Labels } from "@/lib/translate";
 import { SocialNetworks } from "./social-networks";
-import { useContactPage } from "@/features/contact/hooks/use-contact-page";
 import { Button } from "@/components/ui/button";
+import { getContactInfo } from "@/features/contact/queries/get-contact";
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: { params: Promise<{ language: "fr" | "en" }> }) {
 
-  const { language } = useLanguage()
-  const { contactPage } = useContactPage(language)
+  // const { language } = useLanguage()
+  const { language } = await params
+  const contactPage = await getContactInfo(language)
 
   return (
     <div className="w-full h-full p-4 gap-10 md:p-0 md:pt-25">
