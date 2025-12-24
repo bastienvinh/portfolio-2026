@@ -112,6 +112,20 @@ export const Labels = {
       description: {
         en: "Thoughts, tutorials, and insights about web development.",
         fr: "Pensées, tutoriels et idées sur le développement informatique."
+      },
+      minToRead: {
+        en: "min read",
+        fr: "min de lecture"
+      },
+      backToPosts: {
+        en: "Back to Posts",
+        fr: "Retour aux Articles"
+      }
+    },
+    home: {
+      workWithTechnologies: {
+        en: "Work with this stack",
+        fr: "Travaille avec ces technologies"
       }
     }
   }

@@ -2,7 +2,7 @@
 
 import { ScrollPage } from "@/components/scrollpage"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { getArticles } from "@/features/blog/get-articles"
+import { getArticles } from "@/features/blog/get-posts"
 import { Labels } from "@/lib/translate"
 import dayjs from "dayjs"
 import Link from "next/link"

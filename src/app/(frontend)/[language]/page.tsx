@@ -4,6 +4,7 @@ import { Media, Technology } from "../../../../payload-types"
 import Image from "next/image"
 import { getCurrentLanguage } from "@/features/default/queries/get-language"
 import { getAboutData } from "@/features/about/queries/about"
+import { Labels } from "@/lib/translate"
 
 export default async function Home() {
 
@@ -33,7 +34,7 @@ export default async function Home() {
 
         <div className="text-2xl md:text-6xl">{about.job_title}</div>
         <div className="text-xl mb-10 md:mb-0 flex flex-col gap-5">
-          <span className="text-sm">{about.technologies_text}</span>
+          <span className="text-sm md:text-lg">{Labels.page.home.workWithTechnologies[language] ?? "Work with this stack"}:</span>
           <ul className="flex gap-6">
             {about.technologies?.map((tech, index) => (
               <li key={index} className="flex gap-2 items-center">
